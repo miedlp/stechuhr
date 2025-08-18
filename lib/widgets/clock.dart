@@ -8,7 +8,7 @@ import 'package:flutter_analog_clock/flutter_analog_clock.dart';
 import 'package:stechuhr/widgets/dynamicspacing.dart';
 
 class ClockRow extends StatelessWidget {
-  const ClockRow() : super(); 
+  const ClockRow() : super();
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class ClockRow extends StatelessWidget {
             isKeepTime: true,
             child: Align(
               alignment: FractionalOffset(0.5, 0.7),
-              child: FittedBox(fit:
-                BoxFit.contain,
+              child: FittedBox(
+                fit: BoxFit.contain,
                 child: Text(
                   DateTime.now().timeZoneName,
                   style: TextStyle(color: Colors.grey, fontSize: 8),
@@ -33,7 +33,7 @@ class ClockRow extends StatelessWidget {
           ),
         ),
         DynamicSpacing(flex: 2),
-      ]
+      ],
     );
   }
 }

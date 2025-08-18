@@ -18,60 +18,63 @@ class TimeLog extends StatelessWidget {
           // Header row (not scrollable)
           Row(
             children: [
-            DynamicSpacing(flex: 2),
-            Expanded(
-              flex: 1,
-              child: Text(
-                'Start',
-                style: TextStyle(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+              DynamicSpacing(flex: 2),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  'Start',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            DynamicSpacing(),
-            Expanded(
-              flex: 1,
-              child: Text(
-                'Stop',
-                style: TextStyle(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+              DynamicSpacing(),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  'Stop',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            DynamicSpacing(flex: 2)
-          ],
-        ),
-        // Scrollable data rows
-        Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Row(
+              DynamicSpacing(flex: 2),
+            ],
+          ),
+          // Scrollable data rows
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Row(
                 children: [
                   DynamicSpacing(flex: 2),
                   Expanded(
                     flex: 4,
-                    child: Table(children: [
-                      TableRow(children: [Text('12:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                      TableRow(children: [Text('08:00'), Text('17:00')]),
-                    ])
+                    child: Table(
+                      children: [
+                        TableRow(children: [Text('12:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                        TableRow(children: [Text('08:00'), Text('17:00')]),
+                      ],
+                    ),
                   ),
-                  DynamicSpacing()
-                ]
+                  DynamicSpacing(),
+                ],
               ),
+            ),
           ),
-        )],
+        ],
       ),
     );
   }

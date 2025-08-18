@@ -7,13 +7,15 @@ import 'package:provider/provider.dart';
 import "package:scaled_app/scaled_app.dart";
 
 import 'package:stechuhr/pages/overview.dart';
+import 'package:stechuhr/src/rust/frb_generated.dart';
 
 double scaleFactorCallback(Size deviceSize) {
   const double widthOfDesign = 375;
   return deviceSize.width / widthOfDesign;
 }
 
-void main() {
+Future<void> main() async {
+  await RustLib.init();
   runAppScaled(const StechuhrApp(), scaleFactor: scaleFactorCallback);
 }
 

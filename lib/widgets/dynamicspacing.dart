@@ -8,7 +8,11 @@ class DynamicSpacing extends StatelessWidget {
   final int flex;
   final Color color;
 
-  const DynamicSpacing({super.key, this.flex = 1, this.color = Colors.transparent}) : super();
+  const DynamicSpacing({
+    super.key,
+    this.flex = 1,
+    this.color = Colors.transparent,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {

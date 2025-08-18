@@ -15,5 +15,47 @@ The project serves as a first trial to use Flutter with a Rust backend and is no
 
 ## Target Platforms
 
-- [ ] Native Linux for rapid prototyping and debugging
-- [ ] Android Phones for actual usage
+* Native Linux for rapid prototyping and debugging
+* Android Phones for actual usage
+
+## Repository structure
+
+```bash
+.
+├── LICENSE
+├── README.md
+├── Cargo.toml
+├── pubspec.yaml
+├── analysis_options.yaml
+├── devtools_options.yaml
+├── flutter_rust_bridge.yaml
+├── android/                            # Android specific code
+│   └── ...
+├── linux/                              # Linux specific code
+│   └── ...
+├── rust/                               # Rust backend source files
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       ├── api
+│       │   └── ...
+│       └── ...
+├── integration_test
+│   └── ...
+├── rust_builder
+│   └── ...
+├── lib/
+│   ├── main.dart
+│   ├── pages/                          # Dart files defining the app pages
+│   │   └── ...
+│   ├── src
+│   │   └── rust                        # Flutter-Rust-API
+│   │       └── ...
+│   └── widgets/                        # Dart files defining single custom elements of a page, i.e., custom widgets
+│       └── ...
+├── test
+│   └── ...
+├── test_driver
+│    └── ...
+└── ...
+```
