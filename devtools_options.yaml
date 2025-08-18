@@ -1,0 +1,7 @@
+# Copyright (c) 2025 Philipp Miedl
+#
+# SPDX-License-Identifier: EUPL-1.2
+
+description: This file stores settings for Dart & Flutter DevTools.
+documentation: https://docs.flutter.dev/tools/devtools/extensions#configure-extension-enablement-states
+extensions:

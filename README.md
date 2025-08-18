@@ -15,4 +15,5 @@ The project serves as a first trial to use Flutter with a Rust backend and is no
 
 ## Target Platforms
 
-- [ ] Android Phones
+- [ ] Native Linux for rapid prototyping and debugging
+- [ ] Android Phones for actual usage
