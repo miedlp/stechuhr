@@ -6,47 +6,42 @@ import 'package:flutter/material.dart';
 
 import 'package:stechuhr/widgets/dynamicspacing.dart';
 
-class ButtonRow extends StatefulWidget {
-  const ButtonRow({super.key});
-
-  @override
-  State<ButtonRow> createState() => _ButtonRowState();
-}
-
-class _ButtonRowState extends State<ButtonRow> {
-  bool started = false;
+class ButtonRow extends StatelessWidget{
+  const ButtonRow({super.key,
+                   required this.onPressedStart,
+                   required this.onPressedStop});
+  
+  final VoidCallback? onPressedStart;
+  final VoidCallback? onPressedStop;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        DynamicSpacing(),
-        Expanded(
-          flex: 10,
-          child: StyledButton(
-            onPressed: started ? null : () {
-              // TODO PMi: Interface to Rust logic, should reset selectedDate to today
-              setState(() {
-                started = true;
-              });
-            },
-            label: 'Start',
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 8.0
+      ),
+      child: Row(
+        children: <Widget>[
+          DynamicSpacing(),
+          Expanded(
+            flex: 10,
+            child: StyledButton(
+              onPressed: onPressedStart,
+              label: 'Start'
+            )
           ),
-        ),
-        DynamicSpacing(),
-        Expanded(
-          flex: 10,
-          child: StyledButton(
-            onPressed: started ? () {
-              setState(() {
-                started = false;
-              });
-            } : null,
-            label: 'Stop'
-          )
-        ),
-        DynamicSpacing(),
-      ],
+          DynamicSpacing(),
+          Expanded(
+            flex: 10,
+            child: StyledButton(
+              onPressed: onPressedStop,
+              label: 'Stop'
+            )
+          ),
+          DynamicSpacing(),
+        ]
+      )
     );
   }
 }
