@@ -6,8 +6,15 @@ import 'package:flutter/material.dart';
 
 import 'package:stechuhr/widgets/dynamicspacing.dart';
 
-class ButtonRow extends StatelessWidget {
-  const ButtonRow() : super();
+class ButtonRow extends StatefulWidget {
+  const ButtonRow({super.key});
+
+  @override
+  State<ButtonRow> createState() => _ButtonRowState();
+}
+
+class _ButtonRowState extends State<ButtonRow> {
+  bool started = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +24,27 @@ class ButtonRow extends StatelessWidget {
         Expanded(
           flex: 10,
           child: StyledButton(
-            onPressed: () {
+            onPressed: started ? null : () {
               // TODO PMi: Interface to Rust logic, should reset selectedDate to today
+              setState(() {
+                started = true;
+              });
             },
             label: 'Start',
           ),
         ),
         DynamicSpacing(),
-        Expanded(flex: 10, child: StyledButton(onPressed: null, label: 'Stop')),
+        Expanded(
+          flex: 10,
+          child: StyledButton(
+            onPressed: started ? () {
+              setState(() {
+                started = false;
+              });
+            } : null,
+            label: 'Stop'
+          )
+        ),
         DynamicSpacing(),
       ],
     );
