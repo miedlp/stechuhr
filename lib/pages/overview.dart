@@ -70,31 +70,75 @@ class _OverviewPageState extends State<OverviewPage> {
             DynamicSpacing(),
             ButtonRow(
               onPressedStart: started ? null : () {
-                  // TODO PMi: Interface to Rust logic, should reset selectedDate to today
+                  // TODO PMi: Interface to Rust logic
                   setState(() {
                     started = true;
+                    selectedDate = DateTime.now();
                 });
               },
               onPressedStop: started ? () {
-                  // TODO PMi: Interface to Rust logic, should reset selectedDate to today
+                  // TODO PMi: Interface to Rust logic
                   setState(() {
                     started = false;
+                    selectedDate = DateTime.now();
                 });
               } : null
             ),
             DynamicSpacing(),
             TimelogSeparator(),
             DynamicSpacing(),
-            LogSettings(
-              selectedDate: selectedDate!,
-              platform: platform,
-              onChangedDate: (DateTime? value) {
-                setState(() {
-                  selectedDate = value;
-                });
-              },
-              onTapSettings: () async {
-                // TODO PMi: settings for sync to google drive
+            Builder(
+              builder: (BuildContext context) {
+                return LogSettings(
+                  selectedDate: selectedDate!,
+                  platform: platform,
+                  onChangedDate: (DateTime? value) {
+                    setState(() {
+                      selectedDate = value;
+                    });
+                  },
+                  onTapSettings: () async {
+                    Scaffold.of(context).openDrawer();
+                  }
+                );
+              }
+            ),
+            DynamicSpacing(),
+            TimeLog(tablerows: tablerows,),
+            DynamicSpacing(),
+            StatsTable(
+              recordedTimeDay:    formatDuration(durationInMinutes: recordedTimeDay.inMinutes), 
+              recordedTimeWeek:   formatDuration(durationInMinutes: recordedTimeWeek.inMinutes), 
+              recordedTimeMonth:  formatDuration(durationInMinutes: recordedTimeMonth.inMinutes), 
+              diffGoalDay:        formatDuration(durationInMinutes: (recordedTimeDay - goalTimeDay).inMinutes),
+              diffGoalWeek:       formatDuration(durationInMinutes: (recordedTimeWeek - goalTimeWeek).inMinutes), 
+              diffGoalMonth:      formatDuration(durationInMinutes: (recordedTimeMonth - goalTimeMonth).inMinutes),
+            ),
+            DynamicSpacing(),
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Stechuhr App Settings',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('Set Weekly Time Goal'),
+              onTap: () async {
+                // TODO PMi: Navigate to settings page
+                Navigator.pop(context);
 
                 //InkWell(
                 //  onTap: () async {
@@ -128,22 +172,17 @@ class _OverviewPageState extends State<OverviewPage> {
                 ScaffoldMessenger.of(
                   context,
                 ).showSnackBar(SnackBar(
-                  content: Text('Weekly time goal set to: $goalTimeWeek'), duration: const Duration(seconds: 1)
-                  ));
+                  content: Text('Weekly time goal set to: ${formatDuration(durationInMinutes: goalTimeWeek.inMinutes)}'), duration: const Duration(seconds: 1)
+                ));
               }
             ),
-            DynamicSpacing(),
-            TimeLog(tablerows: tablerows,),
-            DynamicSpacing(),
-            StatsTable(
-              recordedTimeDay:    formatDuration(durationInMinutes: recordedTimeDay.inMinutes), 
-              recordedTimeWeek:   formatDuration(durationInMinutes: recordedTimeWeek.inMinutes), 
-              recordedTimeMonth:  formatDuration(durationInMinutes: recordedTimeMonth.inMinutes), 
-              diffGoalDay:        formatDuration(durationInMinutes: (recordedTimeDay - goalTimeDay).inMinutes),
-              diffGoalWeek:       formatDuration(durationInMinutes: (recordedTimeWeek - goalTimeWeek).inMinutes), 
-              diffGoalMonth:      formatDuration(durationInMinutes: (recordedTimeMonth - goalTimeMonth).inMinutes),
-            ),
-            DynamicSpacing(),
+            ListTile(
+              title: Text('Google Drive Sync'),
+              onTap: () {
+                // TODO PMi: settings for sync to google drive
+                Navigator.pop(context);
+              }
+            )
           ],
         ),
       ),

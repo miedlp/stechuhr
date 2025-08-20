@@ -24,7 +24,7 @@ class StatsTable extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return DataTable(
-      dataTextStyle: TextStyle(fontSize: 12),
+      dataTextStyle: TextStyle(fontSize: 11),
       headingTextStyle: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.bold,
