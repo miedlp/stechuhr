@@ -33,7 +33,7 @@ pub fn format_duration(duration_in_minutes: i64) -> String {
     let hours = (in_minutes - (in_minutes % 60)) / 60;
     let minutes = in_minutes - (hours * 60);
 
-    format!("{negative_sign}{hours:0>2}:{minutes:0>2}")
+    format!("{negative_sign}{hours:0>2}h {minutes:0>2}m")
 }
 
 #[flutter_rust_bridge::frb(init)]
